@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: travel-frontend-service
+  labels:
+    app: travel-frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: travel-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+
+# Optional: if you want to expose externally in a cloud that supports LoadBalancer,
+# change `type: ClusterIP` to `type: LoadBalancer` or create an Ingress resource
+# and point it at this service. Keep service as ClusterIP by default for internal use.
